@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class Program
+{
+    static bool AreAnagrams(string str1, string str2)
+    {
+        if (str1.Length != str2.Length)
+            return false;
+
+        int[] charCount = new int[256];
+
+        foreach (char c in str1)
+        {
+            charCount[(int)c]++;
+        }
+        foreach (char c in str2)
+        {
+            charCount[(int)c]--;
+        }
+
+        foreach (int count in charCount)
+        {
+            if (count != 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Charecter 1");
+        string str1 = Console.ReadLine();
+
+        Console.WriteLine("Charecter 2");
+        string str2 = Console.ReadLine();
+
+        if (AreAnagrams(str1, str2))
+        {
+            Console.WriteLine("YES IS RIGHT");
+        }
+        else
+        {
+            Console.WriteLine("NO IS WRONG");
+        }
+        Console.ReadKey();
+    }
+}
